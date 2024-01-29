@@ -8,6 +8,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final counterBloc = BlocProvider.of<CounterBloc>(context);
+    var state = context.watch<CounterBloc>().state;
     return Scaffold(
       backgroundColor: const Color(0xffe0e0e0),
       floatingActionButton: Row(
@@ -34,50 +35,43 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: BlocBuilder<CounterBloc, int>(
-          builder: (context, state) {
-            return Container(
-              width: 190,
-              height: 254,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 12,
-                vertical: 8,
-              ),
-              decoration: BoxDecoration(
-                  color: const Color(0xffe0e0e0),
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Color(0xffbebebe),
-                      spreadRadius: 2,
-                      blurRadius: 30,
-                      offset: Offset(15, 15),
-                    ),
-                    BoxShadow(
-                      color: Color(0xffffffff),
-                      spreadRadius: 2,
-                      blurRadius: 30,
-                      offset: Offset(-15, -15),
-                    ),
-                  ]),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CardNumber(txt: state, reversed: false),
-                    Text(
-                      "$state",
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    CardNumber(txt: state, reversed: true),
-                  ],
+        child: Container(
+          width: 190,
+          height: 254,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 12,
+            vertical: 8,
+          ),
+          decoration: BoxDecoration(
+              color: const Color(0xffe0e0e0),
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: const [
+                BoxShadow(
+                  color: Color(0xffbebebe),
+                  spreadRadius: 2,
+                  blurRadius: 30,
+                  offset: Offset(15, 15),
                 ),
-              ),
-            );
-          },
+                BoxShadow(
+                  color: Color(0xffffffff),
+                  spreadRadius: 2,
+                  blurRadius: 30,
+                  offset: Offset(-15, -15),
+                ),
+              ]),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CardNumber(txt: state, reversed: false),
+                const Icon(
+                  Icons.favorite,
+                  size: 44,
+                ),
+                CardNumber(txt: state, reversed: true),
+              ],
+            ),
+          ),
         ),
       ),
     );
