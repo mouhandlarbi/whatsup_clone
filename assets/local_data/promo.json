@@ -1,0 +1,20 @@
+
+
+[
+    {
+        "img": "assets/images/promo.jpg",
+        "navigatTo": "help_page"
+    },
+    {
+        "img": "assets/images/promo.jpg",
+        "navigatTo": "help_page"
+    },
+    {
+        "img": "assets/images/promo.jpg",
+        "navigatTo": "help_page"
+    },
+    {
+        "img": "assets/images/promo.jpg",
+        "navigatTo": "help_page"
+    }
+  ]
