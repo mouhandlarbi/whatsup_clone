@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:state_management/data/model/promo.dart';
 
 class PromosApi {
-  static Future<List<Promo>> getUsersLocally(BuildContext context) async {
+  static Future<List<Promo>> getPromosLocally(BuildContext context) async {
     //load json's file
     final assetBundle = DefaultAssetBundle.of(context);
     final data = await assetBundle.loadString('assets/local_data/promo.json');

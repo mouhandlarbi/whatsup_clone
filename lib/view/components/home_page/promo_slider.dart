@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:state_management/data/api/promo_api.dart';
 import 'package:state_management/data/model/promo.dart';
 
 class PromoSlider extends StatefulWidget {
   const PromoSlider({
     super.key,
-    required this.promos,
   });
-  final List<Promo> promos;
+
   @override
   State<PromoSlider> createState() => _PromoSliderState();
 }
@@ -14,9 +14,20 @@ class PromoSlider extends StatefulWidget {
 class _PromoSliderState extends State<PromoSlider>
     with SingleTickerProviderStateMixin {
   TabController? controller;
+  List<Promo> promos = [];
+  bool isPromoLoding = false;
+  setPromo() async {
+    isPromoLoding = true;
+    setState(() {});
+    promos = await PromosApi.getPromosLocally(context);
+    isPromoLoding = false;
+    setState(() {});
+  }
+
   @override
   void initState() {
     controller = TabController(length: 4, vsync: this);
+    setPromo();
     super.initState();
   }
 
@@ -25,29 +36,31 @@ class _PromoSliderState extends State<PromoSlider>
     return SizedBox(
       height: 200,
       //color: Colors.amber,
-      child: Stack(
-        alignment: Alignment.topCenter,
-        children: [
-          SizedBox(
-              height: 180,
-              //color: Colors.green,
-              child: TabBarView(
-                controller: controller,
-                children: [
-                  ...widget.promos.map((e) => PromoCard(promo: e)).toList(),
-                ],
-              )),
-          Positioned(
-            bottom: 0,
-            child: TabPageSelector(
-              borderStyle: BorderStyle.none,
-              color: Colors.grey,
-              selectedColor: Colors.black,
-              controller: controller,
+      child: isPromoLoding
+          ? const CircularProgressIndicator()
+          : Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                SizedBox(
+                    height: 180,
+                    //color: Colors.green,
+                    child: TabBarView(
+                      controller: controller,
+                      children: [
+                        ...promos.map((e) => PromoCard(promo: e)).toList(),
+                      ],
+                    )),
+                Positioned(
+                  bottom: 0,
+                  child: TabPageSelector(
+                    borderStyle: BorderStyle.none,
+                    color: Colors.grey,
+                    selectedColor: Colors.black,
+                    controller: controller,
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
     );
   }
 }

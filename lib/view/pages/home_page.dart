@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:state_management/configs/menu_item/home_page_menu.dart';
 import 'package:state_management/data/api/user_api.dart';
-import 'package:state_management/data/model/promo.dart';
 import 'package:state_management/data/model/user.dart';
 import 'package:state_management/data/static/services.dart';
 import 'package:state_management/view/components/home_page/circle_swiper.dart';
@@ -11,8 +10,31 @@ import 'package:state_management/view/components/home_page/search_feild.dart';
 import 'package:state_management/view/components/home_page/squar_swiper.dart';
 import 'package:state_management/view/components/home_page/title_divider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<User> users = [];
+
+  bool isLoading = false;
+  setUser() async {
+    isLoading = true;
+    setState(() {});
+    users = await UsersApi.getUsersLocally(context);
+    isLoading = false;
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    setUser();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,43 +42,26 @@ class HomePage extends StatelessWidget {
       drawer: Drawer(
         child: Column(
           children: [
-            FutureBuilder<List<User>>(
-              future: UsersApi.getUsersLocally(context),
-              builder: (context, snapshot) {
-                final users = snapshot.data;
-                switch (snapshot.connectionState) {
-                  case ConnectionState.waiting:
-                    return const Center(child: CircularProgressIndicator());
-                  default:
-                    if (snapshot.hasError) {
-                      return const Center(
-                        child: Text('Error'),
-                      );
-                    } else {
-                      return UserAccountsDrawerHeader(
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                        ),
-                        currentAccountPicture: CircleAvatar(
-                          backgroundColor: Colors.amber,
-                          backgroundImage: AssetImage(users![0].urlAvatar),
-                        ),
-                        currentAccountPictureSize: const Size.square(64),
-                        accountName: Text(
-                          users[0].username,
-                          style: const TextStyle(
-                              color: Colors.black, fontSize: 16),
-                        ),
-                        accountEmail: Text(
-                          users[0].email,
-                          style:
-                              const TextStyle(color: Colors.grey, fontSize: 14),
-                        ),
-                      );
-                    }
-                }
-              },
-            ),
+            isLoading
+                ? const CircularProgressIndicator()
+                : UserAccountsDrawerHeader(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                    ),
+                    currentAccountPicture: CircleAvatar(
+                      backgroundColor: Colors.amber,
+                      backgroundImage: AssetImage(users[0].urlAvatar),
+                    ),
+                    currentAccountPictureSize: const Size.square(64),
+                    accountName: Text(
+                      users[0].username,
+                      style: const TextStyle(color: Colors.black, fontSize: 16),
+                    ),
+                    accountEmail: Text(
+                      users[0].email,
+                      style: const TextStyle(color: Colors.grey, fontSize: 14),
+                    ),
+                  ),
             ...drawerTile
                 .map((e) => DrawerListTile(
                       txt: e.name,
@@ -80,9 +85,7 @@ class HomePage extends StatelessWidget {
       body: ListView(
         children: [
           const SearchFeild(),
-          PromoSlider(
-            promos: prmos,
-          ),
+          const PromoSlider(),
           const TitleDivider(txt: "Home Services"),
           CircleSwiper(services: homeServices),
           const TitleDivider(txt: "popular Services"),
@@ -124,13 +127,6 @@ class DrawerListTile extends StatelessWidget {
     );
   }
 }
-
-List<Promo> prmos = [
-  Promo(img: "assets/images/promo.jpg", pageRoute: "help_page"),
-  Promo(img: "assets/images/promo.jpg", pageRoute: "help_page"),
-  Promo(img: "assets/images/promo.jpg", pageRoute: "help_page"),
-  Promo(img: "assets/images/promo.jpg", pageRoute: "help_page"),
-];
 
 List<OtherService> otherServices = [
   OtherService(
