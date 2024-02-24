@@ -3,6 +3,7 @@ import 'package:state_management/configs/menu_item/home_page_menu.dart';
 import 'package:state_management/data/api/user_api.dart';
 import 'package:state_management/data/model/user.dart';
 import 'package:state_management/data/model/worker.dart';
+import 'package:state_management/data/repo/user_repository.dart';
 import 'package:state_management/data/static/services.dart';
 import 'package:state_management/view/components/home_page/circle_swiper.dart';
 import 'package:state_management/view/components/home_page/promo_slider.dart';
@@ -20,12 +21,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<User> users = [];
-
+  UserRepository userRepository = UserRepository();
   bool isLoading = false;
   setUser() async {
     isLoading = true;
     setState(() {});
-    users = await UsersApi.getUsersLocally(context);
+    //users = await UsersApi.getUsersLocally(context);
+    users = await userRepository.getUsers();
     isLoading = false;
     setState(() {});
   }
@@ -170,7 +172,7 @@ List<Project> fakeProject = [
       "assets/images/portfolio_0.jpg",
       "assets/images/portfolio_0.jpg",
     ],
-    dateTime: DateTime.now(),
+    dateTime: "DateTime.now",
     description:
         "Moonlight dripped through ancient oaks, weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness.",
   ),
@@ -181,7 +183,7 @@ List<Project> fakeProject = [
       "assets/images/portfolio_1.jpg",
       "assets/images/portfolio_1.jpg",
     ],
-    dateTime: DateTime.now(),
+    dateTime: "DateTime.now()",
     description:
         "Moonlight dripped through ancient oaks, weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness.",
   ),
@@ -192,7 +194,7 @@ List<Project> fakeProject = [
       "assets/images/portfolio_2.jpg",
       "assets/images/portfolio_2.jpg",
     ],
-    dateTime: DateTime.now(),
+    dateTime: "DateTime.now()",
     description:
         "Moonlight dripped through ancient oaks, weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness.",
   ),

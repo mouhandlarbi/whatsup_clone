@@ -1,0 +1,113 @@
+
+
+[
+    {
+      "name": "ali ben jordan",
+      "email": "alidali@gmail.com",
+      "numberPhone": "0783469244",
+      "profileImage": "assets/images/service.jpg",
+      "portfolio": [
+        {
+          "name": "2 bedroom painting",
+          "thumbnail": "assets/images/portfolio_0.jpg",
+          "images": [
+            "assets/images/portfolio_0.jpg",
+            "assets/images/portfolio_0.jpg"
+          ],
+          "dateTime": "2024-02-24T13:55:32.175Z",
+          "description": "Moonlight dripped through ancient oaks, weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness."
+        },
+        {
+          "name": "2 bedroom painting",
+          "thumbnail": "assets/images/portfolio_1.jpg",
+          "images": [
+            "assets/images/portfolio_1.jpg",
+            "assets/images/portfolio_1.jpg"
+          ],
+          "dateTime": "2024-02-24T13:55:32.175Z",
+          "description": "Moonlight dripped through ancient oaks, weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness."
+        },
+        {
+          "name": "2 bedroom painting",
+          "thumbnail": "assets/images/portfolio_2.jpg",
+          "images": [
+            "assets/images/portfolio_2.jpg",
+            "assets/images/portfolio_2.jpg"
+          ],
+          "dateTime": "2024-02-24T13:55:32.175Z",
+          "description": "Moonlight dripped through ancient oaks, weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness."
+        }
+      ],
+      "services": [
+        {
+          "name": "plumber",
+          "icone": "plumbing",
+          "image": "assets/images/profile.jpg"
+        },
+        {
+          "name": "electrician",
+          "icone": "thunderstorm",
+          "image": "assets/images/profile.jpg"
+        }
+      ],
+      "price": 22,
+      "rating": 4.5,
+      "isAvailable": true,
+      "description": "weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness. The air hummed with unseen life"
+    },
+    {
+      "name": "mohand oupatrick",
+      "email": "mohandoupatrick@gmail.com",
+      "numberPhone": "0783469244",
+      "profileImage": "assets/images/service.jpg",
+      "portfolio": [
+        {
+          "name": "2 bedroom painting",
+          "thumbnail": "assets/images/portfolio_0.jpg",
+          "images": [
+            "assets/images/portfolio_0.jpg",
+            "assets/images/portfolio_0.jpg"
+          ],
+          "dateTime": "2024-02-24T13:55:32.175Z",
+          "description": "Moonlight dripped through ancient oaks, weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness."
+        },
+        {
+          "name": "2 bedroom painting",
+          "thumbnail": "assets/images/portfolio_1.jpg",
+          "images": [
+            "assets/images/portfolio_1.jpg",
+            "assets/images/portfolio_1.jpg"
+          ],
+          "dateTime": "2024-02-24T13:55:32.175Z",
+          "description": "Moonlight dripped through ancient oaks, weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness."
+        },
+        {
+          "name": "2 bedroom painting",
+          "thumbnail": "assets/images/portfolio_2.jpg",
+          "images": [
+            "assets/images/portfolio_2.jpg",
+            "assets/images/portfolio_2.jpg"
+          ],
+          "dateTime": "2024-02-24T13:55:32.175Z",
+          "description": "Moonlight dripped through ancient oaks, weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness."
+        }
+      ],
+      "services": [
+        {
+          "name": "plumber",
+          "icone": "plumbing",
+          "image": "assets/images/profile.jpg"
+        },
+        {
+          "name": "electrician",
+          "icone": "thunderstorm",
+          "image": "assets/images/profile.jpg"
+        }
+      ],
+      "price": 14,
+      "rating": 4,
+      "isAvailable": true,
+      "description": "weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness. The air hummed with unseen life"
+    }
+  ]
+  

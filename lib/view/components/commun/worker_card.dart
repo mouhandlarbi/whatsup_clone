@@ -68,7 +68,7 @@ class WorkerCard extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            worker.services[0].name,
+                            "service",
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w300,
