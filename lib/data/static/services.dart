@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class Service {
+class Service1 {
   final String txt;
   final IconData icone;
   final String image;
   final String navigatTo;
-  Service(
+  Service1(
       {required this.txt,
       required this.icone,
       required this.image,
       required this.navigatTo});
 }
 
-class HomeService extends Service {
+class HomeService extends Service1 {
   HomeService(
       {required super.txt,
       required super.icone,
@@ -20,7 +20,7 @@ class HomeService extends Service {
       required super.navigatTo});
 }
 
-class OtherService extends Service {
+class OtherService extends Service1 {
   OtherService(
       {required super.txt,
       required super.icone,
@@ -28,7 +28,7 @@ class OtherService extends Service {
       required super.navigatTo});
 }
 
-List<HomeService> homeServices = [
+List<HomeService> homeServicess = [
   HomeService(
     txt: "Painting",
     icone: Icons.pinch,

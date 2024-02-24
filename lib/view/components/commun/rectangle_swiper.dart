@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:state_management/data/static/services.dart';
+import 'package:state_management/data/model/worker.dart';
+import 'package:state_management/view/pages/project_detail_page.dart';
 
 class RectangleSwiper extends StatelessWidget {
   const RectangleSwiper({
     super.key,
-    required this.services,
+    required this.projects,
   });
-  final List<OtherService> services;
+  final List<Project> projects;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -14,10 +15,10 @@ class RectangleSwiper extends StatelessWidget {
       //color: Colors.red,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: services.length,
+        itemCount: projects.length,
         itemBuilder: (BuildContext context, int index) {
           return RectangleCard(
-            service: services[index],
+            project: projects[index],
           );
         },
       ),
@@ -26,13 +27,15 @@ class RectangleSwiper extends StatelessWidget {
 }
 
 class RectangleCard extends StatelessWidget {
-  const RectangleCard({super.key, required this.service});
-  final OtherService service;
+  const RectangleCard({super.key, required this.project});
+  final Project project;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed(service.navigatTo);
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+          return ProjectDetailPage(project: project);
+        }));
       },
       child: Column(
         children: [
@@ -47,7 +50,7 @@ class RectangleCard extends StatelessWidget {
                   color: Colors.green,
                   borderRadius: BorderRadius.circular(16),
                   image: DecorationImage(
-                      image: AssetImage(service.image), fit: BoxFit.cover),
+                      image: AssetImage(project.thumbnail), fit: BoxFit.cover),
                 ),
               ),
             ),
@@ -57,7 +60,7 @@ class RectangleCard extends StatelessWidget {
             //color: Colors.blue,
             alignment: Alignment.center,
             child: Text(
-              service.txt,
+              project.name,
               style: const TextStyle(
                 fontSize: 18,
                 letterSpacing: 1,

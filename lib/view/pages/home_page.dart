@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:state_management/configs/menu_item/home_page_menu.dart';
 import 'package:state_management/data/api/user_api.dart';
 import 'package:state_management/data/model/user.dart';
+import 'package:state_management/data/model/worker.dart';
 import 'package:state_management/data/static/services.dart';
 import 'package:state_management/view/components/home_page/circle_swiper.dart';
 import 'package:state_management/view/components/home_page/promo_slider.dart';
-import 'package:state_management/view/components/home_page/rectangle_swiper.dart';
+import 'package:state_management/view/components/commun/rectangle_swiper.dart';
 import 'package:state_management/view/components/home_page/search_feild.dart';
 import 'package:state_management/view/components/home_page/squar_swiper.dart';
-import 'package:state_management/view/components/home_page/title_divider.dart';
+import 'package:state_management/view/components/commun/title_divider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -87,11 +88,11 @@ class _HomePageState extends State<HomePage> {
           const SearchFeild(),
           const PromoSlider(),
           const TitleDivider(txt: "Home Services"),
-          CircleSwiper(services: homeServices),
+          CircleSwiper(services: services),
           const TitleDivider(txt: "popular Services"),
           SquarSwiper(services: otherServices),
           const TitleDivider(txt: "renovate your home"),
-          RectangleSwiper(services: renovateHome),
+          RectangleSwiper(projects: fakeProject),
         ],
       ),
     );
@@ -161,35 +162,38 @@ List<OtherService> otherServices = [
   ),
 ];
 
-List<OtherService> renovateHome = [
-  OtherService(
-    txt: "Home interior",
-    icone: Icons.settings_applications,
-    image: "assets/images/worker.jpg",
-    navigatTo: "contact_page",
+List<Project> fakeProject = [
+  Project(
+    name: "2 bedroom painting",
+    thumbnail: "assets/images/portfolio_0.jpg",
+    images: [
+      "assets/images/portfolio_0.jpg",
+      "assets/images/portfolio_0.jpg",
+    ],
+    dateTime: DateTime.now(),
+    description:
+        "Moonlight dripped through ancient oaks, weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness.",
   ),
-  OtherService(
-    txt: "Modular kitchen",
-    icone: Icons.settings_applications,
-    image: "assets/images/worker.jpg",
-    navigatTo: "contact_page",
+  Project(
+    name: "2 bedroom painting",
+    thumbnail: "assets/images/portfolio_1.jpg",
+    images: [
+      "assets/images/portfolio_1.jpg",
+      "assets/images/portfolio_1.jpg",
+    ],
+    dateTime: DateTime.now(),
+    description:
+        "Moonlight dripped through ancient oaks, weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness.",
   ),
-  OtherService(
-    txt: "comercial building",
-    icone: Icons.settings_applications,
-    image: "assets/images/worker.jpg",
-    navigatTo: "contact_page",
-  ),
-  OtherService(
-    txt: "office interior",
-    icone: Icons.settings_applications,
-    image: "assets/images/worker.jpg",
-    navigatTo: "contact_page",
-  ),
-  OtherService(
-    txt: "txt",
-    icone: Icons.settings_applications,
-    image: "assets/images/worker.jpg",
-    navigatTo: "contact_page",
+  Project(
+    name: "2 bedroom painting",
+    thumbnail: "assets/images/portfolio_2.jpg",
+    images: [
+      "assets/images/portfolio_2.jpg",
+      "assets/images/portfolio_2.jpg",
+    ],
+    dateTime: DateTime.now(),
+    description:
+        "Moonlight dripped through ancient oaks, weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness.",
   ),
 ];
