@@ -26,17 +26,16 @@ class WorkerDetailPage extends StatelessWidget {
               fontWeight: FontWeight.w400,
             ),
           ),
-          Text(
-            worker.description,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-              color: Colors.grey[600],
-            ),
-          ),
-          DetailsImage(
-            worker: worker,
-          ),
+          // Text(
+          //   worker.description,
+          //   style: TextStyle(
+          //     fontSize: 16,
+          //     fontWeight: FontWeight.w400,
+          //     color: Colors.grey[600],
+          //   ),
+          // ),
+          //DetailsImage(worker: worker),
+          Prol(worker: worker),
           const TitleDivider(txt: "Recent Projects"),
           RectangleSwiper(projects: worker.portfolio),
           Row(
@@ -161,6 +160,55 @@ class DetailsImageItem extends StatelessWidget {
                 style: const TextStyle(color: Colors.white),
               ),
       ],
+    );
+  }
+}
+
+class Prol extends StatelessWidget {
+  const Prol({
+    super.key,
+    required this.worker,
+  });
+  final Worker worker;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 260,
+      width: double.infinity,
+      child: Row(
+        children: [
+          Column(
+            children: [
+              CircleAvatar(
+                backgroundColor: Colors.red,
+                radius: 62,
+              ),
+              Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("data"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("data"),
+                  )
+                ],
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text("data"),
+              )
+            ],
+          ),
+          Column(
+            children: [
+              Text(worker.name),
+              Text(worker.email),
+            ],
+          )
+        ],
+      ),
     );
   }
 }
