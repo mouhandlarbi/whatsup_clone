@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:state_management/configs/menu_item/home_page_menu.dart';
-import 'package:state_management/data/api/user_api.dart';
+import 'package:state_management/data/model/business.dart';
 import 'package:state_management/data/model/user.dart';
 import 'package:state_management/data/model/worker.dart';
+import 'package:state_management/data/repo/business_repository.dart';
 import 'package:state_management/data/repo/user_repository.dart';
-import 'package:state_management/data/static/services.dart';
 import 'package:state_management/view/components/home_page/circle_swiper.dart';
 import 'package:state_management/view/components/home_page/promo_slider.dart';
 import 'package:state_management/view/components/commun/rectangle_swiper.dart';
-import 'package:state_management/view/components/home_page/search_feild.dart';
 import 'package:state_management/view/components/home_page/squar_swiper.dart';
 import 'package:state_management/view/components/commun/title_divider.dart';
 
@@ -21,14 +20,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<User> users = [];
+  List<Business> businesses = [];
   UserRepository userRepository = UserRepository();
+  BusinessRepository businessRepository = BusinessRepository();
   bool isLoading = false;
+  bool bisLoading = false;
   setUser() async {
     isLoading = true;
+    bisLoading = true;
     setState(() {});
     //users = await UsersApi.getUsersLocally(context);
     users = await userRepository.getUsers();
+    businesses = await businessRepository.getBusinesss();
     isLoading = false;
+    bisLoading = false;
     setState(() {});
   }
 
@@ -57,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     currentAccountPictureSize: const Size.square(64),
                     accountName: Text(
-                      users[0].username,
+                      "${users[0].username}.${users[0].hasBusiness}", //users[0].username,
                       style: const TextStyle(color: Colors.black, fontSize: 16),
                     ),
                     accountEmail: Text(
@@ -87,13 +92,17 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ListView(
         children: [
-          const SearchFeild(),
+          //const SearchFeild(),
           const PromoSlider(),
           const TitleDivider(txt: "Home Services"),
           CircleSwiper(services: services),
           const TitleDivider(txt: "popular Services"),
-          SquarSwiper(services: otherServices),
-          const TitleDivider(txt: "renovate your home"),
+          bisLoading
+              ? const Text("data")
+              : SquarSwiper(
+                  businesses: businesses,
+                ),
+          const TitleDivider(txt: "shop now"),
           RectangleSwiper(projects: fakeProject),
         ],
       ),
@@ -129,6 +138,18 @@ class DrawerListTile extends StatelessWidget {
       ),
     );
   }
+}
+
+class OtherService {
+  final String txt;
+  final IconData icone;
+  final String image;
+  final String navigatTo;
+  OtherService(
+      {required this.txt,
+      required this.icone,
+      required this.image,
+      required this.navigatTo});
 }
 
 List<OtherService> otherServices = [

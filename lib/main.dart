@@ -9,7 +9,6 @@ import 'package:state_management/view/pages/my_bookings_page.dart';
 import 'package:state_management/view/pages/my_profile_page.dart';
 import 'package:state_management/view/pages/notification_page.dart';
 import 'package:state_management/view/pages/refer_and_earn_page.dart';
-import 'package:state_management/view/pages/worker_list_page.dart';
 
 void main() {
   runApp(const MyApp());

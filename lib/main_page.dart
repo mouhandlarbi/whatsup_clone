@@ -35,8 +35,8 @@ class _MainHomePageState extends State<MainHomePage> {
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
-            label: 'Booking',
+            icon: Icon(Icons.message_outlined),
+            label: 'inbox',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_2_outlined),

@@ -1,6 +1,6 @@
 import 'package:state_management/data/model/worker.dart';
 import 'package:flutter/material.dart';
-import 'package:state_management/view/pages/worker_list_page.dart';
+import 'package:state_management/view/pages/business_list_page.dart';
 
 class CircleSwiper extends StatelessWidget {
   const CircleSwiper({
@@ -41,7 +41,8 @@ class CircleIcon extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-          return WorkerList(service: service);
+          //return WorkerList(service: service);
+          return const BusinessList(servoce: "business");
         }));
       },
       child: Padding(

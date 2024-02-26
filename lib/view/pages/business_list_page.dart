@@ -1,19 +1,71 @@
 import 'package:flutter/material.dart';
-import 'package:state_management/data/model/worker.dart';
-import 'package:state_management/view/pages/worker_detail_page.dart';
+import 'package:state_management/data/model/business.dart';
+import 'package:state_management/data/repo/business_repository.dart';
+import 'package:state_management/view/pages/business_detail_page%20.dart';
 
-class WorkerCard extends StatelessWidget {
-  const WorkerCard({
+class BusinessList extends StatefulWidget {
+  const BusinessList({
     super.key,
-    required this.worker,
+    required this.servoce,
   });
-  final Worker worker;
+  final String servoce;
+
+  @override
+  State<BusinessList> createState() => _BusinessListState();
+}
+
+class _BusinessListState extends State<BusinessList> {
+  final String serviceName = "plumber";
+
+  List<Business> businesses = [];
+  BusinessRepository businessRepository = BusinessRepository();
+  bool isLoading = false;
+  bool bisLoading = false;
+  setUser() async {
+    isLoading = true;
+    bisLoading = true;
+    setState(() {});
+    businesses = await businessRepository.getBusinesss();
+    isLoading = false;
+    bisLoading = false;
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    setUser();
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("looking for $serviceName"),
+        centerTitle: true,
+      ),
+      body: ListView(
+        children: businesses.map((e) => BusinessCard(business: e)).toList(),
+      ),
+    );
+  }
+}
+
+class BusinessCard extends StatelessWidget {
+  const BusinessCard({
+    super.key,
+    required this.business,
+  });
+  final Business business;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-          return WorkerDetailPage(worker: worker);
+          return BusinessDetailPage(
+            business: business,
+          );
         }));
       },
       child: Container(
@@ -42,7 +94,8 @@ class WorkerCard extends StatelessWidget {
                           image: DecorationImage(
                             fit: BoxFit.cover,
                             image: AssetImage(
-                              worker.profileImage,
+                              business.businessLogo ??
+                                  "assets/images/profile.jpg",
                             ),
                           ),
                         ),
@@ -61,7 +114,7 @@ class WorkerCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            worker.name,
+                            business.businessName,
                             style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w500,
@@ -82,7 +135,7 @@ class WorkerCard extends StatelessWidget {
                                 color: Colors.amber,
                               ),
                               Text(
-                                worker.rating.toString(),
+                                business.rating,
                                 style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w500,
@@ -90,12 +143,12 @@ class WorkerCard extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Text(
-                                "€${worker.price}/hr",
-                                style: const TextStyle(
+                                "€55/hr",
+                                style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w500,
                                 ),

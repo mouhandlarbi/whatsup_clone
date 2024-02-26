@@ -12,6 +12,7 @@ class UserRepository {
   Future<List<User>> getUsers() async {
     var res = await api.getUsersLocally();
     //List list = res.data['users'];
-    return res.map((e) => User.fromJson(e)).toList();
+    //return res.map((e) => User.fromMap(e)).toList();
+    return res.map((e) => User.fromMap(e)).toList();
   }
 }

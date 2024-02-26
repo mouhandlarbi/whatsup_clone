@@ -1,17 +1,25 @@
 
 [
     {
-    "username":"Emma Spoon",
+    "username":"Emma lodal",
     "email":"EmmaSpoon@gmail.com",
     "urlAvatar":"assets/images/profile.jpg",
     "phoneNumber":"07 83 13 64 83",
-    "favorite":[]
+    "businessId":null,
+    "userId":"1245521",
+    "storeId":null,
+    "hasBusiness":false,
+    "hasStore":false
     },
     {
-    "username":"said slimana",
-    "email":"saidslimana@gmail.com",
-    "urlAvatar":"assets/images/profile.jpg",
-    "phoneNumber":"07 83 13 64 83",
-    "favorite":[]
-    }
+      "username":"stiven galder",
+      "email":"stivengalder@gmail.com",
+      "urlAvatar":"assets/images/profile.jpg",
+      "phoneNumber":"07 83 13 64 83",
+      "businessId":null,
+      "userId":"1245522",
+      "storeId":null,
+      "hasBusiness":false,
+      "hasStore":false
+      }
   ]
