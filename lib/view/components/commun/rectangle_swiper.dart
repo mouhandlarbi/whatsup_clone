@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:state_management/data/model/worker.dart';
+import 'package:state_management/data/model/project.dart';
 import 'package:state_management/view/pages/project_detail_page.dart';
 
 class RectangleSwiper extends StatelessWidget {

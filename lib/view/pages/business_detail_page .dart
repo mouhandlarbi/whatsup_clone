@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:state_management/data/model/business.dart';
-import 'package:state_management/data/model/worker.dart';
+import 'package:state_management/data/model/project.dart';
 import 'package:state_management/view/components/commun/rectangle_swiper.dart';
 import 'package:state_management/view/components/commun/title_divider.dart';
 
@@ -478,6 +478,7 @@ class BusinessInformation extends StatelessWidget {
 
 List<Project> fakeProject = [
   Project(
+    projectId: "5694",
     name: "2 bedroom painting",
     thumbnail: "assets/images/portfolio_0.jpg",
     images: [
@@ -489,6 +490,7 @@ List<Project> fakeProject = [
         "Moonlight dripped through ancient oaks, weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness.",
   ),
   Project(
+    projectId: "1287",
     name: "2 bedroom painting",
     thumbnail: "assets/images/portfolio_1.jpg",
     images: [
@@ -500,6 +502,7 @@ List<Project> fakeProject = [
         "Moonlight dripped through ancient oaks, weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness.",
   ),
   Project(
+    projectId: "7391",
     name: "2 bedroom painting",
     thumbnail: "assets/images/portfolio_2.jpg",
     images: [

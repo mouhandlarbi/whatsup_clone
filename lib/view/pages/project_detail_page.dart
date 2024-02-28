@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:state_management/data/model/worker.dart';
+import 'package:state_management/data/model/project.dart';
 
 class ProjectDetailPage extends StatelessWidget {
   const ProjectDetailPage({

@@ -1,4 +1,4 @@
-import 'package:state_management/data/model/worker.dart';
+import 'package:state_management/data/model/project.dart';
 import 'package:flutter/material.dart';
 import 'package:state_management/view/pages/business_list_page.dart';
 

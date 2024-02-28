@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:state_management/view/pages/account_page.dart';
-import 'package:state_management/view/pages/booking_page.dart';
+import 'package:state_management/view/pages/chats_list_page.dart';
 import 'package:state_management/view/pages/home_page.dart';
 import 'package:state_management/view/pages/search_page.dart';
 
@@ -51,7 +51,7 @@ class _MainHomePageState extends State<MainHomePage> {
 
 List<Widget> pages = [
   const HomePage(),
-  const Booking(),
   const SearchPage(),
+  const ChatListPage(),
   const Account(),
 ];

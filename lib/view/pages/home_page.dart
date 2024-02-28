@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:state_management/configs/menu_item/home_page_menu.dart';
 import 'package:state_management/data/model/business.dart';
 import 'package:state_management/data/model/user.dart';
-import 'package:state_management/data/model/worker.dart';
+import 'package:state_management/data/model/project.dart';
 import 'package:state_management/data/repo/business_repository.dart';
+import 'package:state_management/data/repo/project_repository.dart';
 import 'package:state_management/data/repo/user_repository.dart';
 import 'package:state_management/view/components/home_page/circle_swiper.dart';
 import 'package:state_management/view/components/home_page/promo_slider.dart';
@@ -21,18 +22,24 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<User> users = [];
   List<Business> businesses = [];
+  List<Project> projects = [];
   UserRepository userRepository = UserRepository();
   BusinessRepository businessRepository = BusinessRepository();
+  ProjectRepository projectRepository = ProjectRepository();
+  bool pisLoading = false;
   bool isLoading = false;
   bool bisLoading = false;
   setUser() async {
     isLoading = true;
     bisLoading = true;
+    bisLoading = true;
     setState(() {});
     //users = await UsersApi.getUsersLocally(context);
     users = await userRepository.getUsers();
     businesses = await businessRepository.getBusinesss();
+    projects = await projectRepository.getProjects();
     isLoading = false;
+    bisLoading = false;
     bisLoading = false;
     setState(() {});
   }
@@ -103,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                   businesses: businesses,
                 ),
           const TitleDivider(txt: "shop now"),
-          RectangleSwiper(projects: fakeProject),
+          RectangleSwiper(projects: projects),
         ],
       ),
     );
@@ -178,45 +185,9 @@ List<OtherService> otherServices = [
     navigatTo: "contact_page",
   ),
   OtherService(
-    txt: "txt",
+    txt: "txddt",
     icone: Icons.settings_applications,
     image: "assets/images/service.jpg",
     navigatTo: "contact_page",
-  ),
-];
-
-List<Project> fakeProject = [
-  Project(
-    name: "2 bedroom painting",
-    thumbnail: "assets/images/portfolio_0.jpg",
-    images: [
-      "assets/images/portfolio_0.jpg",
-      "assets/images/portfolio_0.jpg",
-    ],
-    dateTime: "DateTime.now",
-    description:
-        "Moonlight dripped through ancient oaks, weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness.",
-  ),
-  Project(
-    name: "2 bedroom painting",
-    thumbnail: "assets/images/portfolio_1.jpg",
-    images: [
-      "assets/images/portfolio_1.jpg",
-      "assets/images/portfolio_1.jpg",
-    ],
-    dateTime: "DateTime.now()",
-    description:
-        "Moonlight dripped through ancient oaks, weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness.",
-  ),
-  Project(
-    name: "2 bedroom painting",
-    thumbnail: "assets/images/portfolio_2.jpg",
-    images: [
-      "assets/images/portfolio_2.jpg",
-      "assets/images/portfolio_2.jpg",
-    ],
-    dateTime: "DateTime.now()",
-    description:
-        "Moonlight dripped through ancient oaks, weaving shadows on moss-covered stones. A lone owl hooted, its cry echoing through the stillness. A fox rustled in the undergrowth, its eyes gleaming emeralds in the darkness.",
   ),
 ];
